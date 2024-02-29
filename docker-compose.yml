@@ -1,0 +1,24 @@
+name: meshstatus
+services:
+  meshstatus-databaser:
+    restart: unless-stopped
+    image: lolloandr/meshtastic-status-databaser
+    environment:
+      - DB_HOST=host
+      - DB_USER=user
+      - DB_PASSWORD=pass
+      - DB_DATABASE=meshtastic
+      - MQTT_USER=user
+      - MQTT_PASSWORD=pass
+      - MQTT_HOST=host
+
+  meshstatus-bot:
+    restart: unless-stopped
+    image: lolloandr/meshtastic-status-bot
+    environment:
+      - DB_HOST=host
+      - DB_USER=user
+      - DB_PASSWORD=pass
+      - DB_DATABASE=meshtastic
+      - TOKEN=TOKEN
+      - CHAT_ID=chat_id

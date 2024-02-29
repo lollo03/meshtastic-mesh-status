@@ -1,0 +1,17 @@
+# Dockerfile, Image, Container
+# Container with python version 3.10
+FROM python:3.10
+
+# Add python file and directory
+ADD bot.py .
+
+# upgrade pip and install pip packages
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir mysql-connector-python && \
+    pip install --no-cache-dir requests && \
+    pip install --no-cache-dir python-dotenv
+    # Note: we had to merge the two "pip install" package lists here, otherwise
+    # the last "pip install" command in the OP may break dependency resolution...
+
+# run python program
+CMD ["python", "bot.py"]
