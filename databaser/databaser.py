@@ -46,6 +46,8 @@ mqttc.on_message = on_message
 
 mqttc.username_pw_set(os.getenv("MQTT_USER"), os.getenv("MQTT_PASSWORD"))
 
+print(f"Mi provo a connettere... Username: {{MQTT_USER}}, password: {{MQTT_PASSWORD}}")
+
 mqttc.connect(os.getenv("MQTT_HOST"), 1883, 60)
 
 cursore = mydb.cursor()
